@@ -26,8 +26,21 @@ public class Follow : MonoBehaviour
         Vector3 followVector = transform.forward * -followDistance;
 
         Vector3 cameraTargetPosition = targetPosition + followVector;
-
+        
         transform.position = Vector3.Lerp(transform.position, cameraTargetPosition, 
             cameraFollowSpeed * Time.deltaTime);
     }
+
+    //Vector3 cameraTargetPosition = CalculateCameraTargetPosition();
+    /*
+    Vector3 CalculateCameraTargetPosition()
+    {
+        Vector3 targetPosition = target.transform.position;
+
+        Vector3 followVector = transform.forward * -followDistance;
+
+        Vector3 cameraTargetPosition = targetPosition + followVector;
+
+        return cameraTargetPosition;
+    }*/
 }
