@@ -10,14 +10,21 @@ public class Follow : MonoBehaviour
     public float cameraFollowSpeed = 0.1f;
     public float cameraRotationSpeed = 1.0f;
 
-    // Start is called before the first frame update
-    void Start()
+    Vector3 CalculateCameraTargetPosition()
     {
         Vector3 targetPosition = target.transform.position;
 
         Vector3 followVector = transform.forward * -followDistance;
 
-        transform.position = targetPosition + followVector + followOffset;
+        Vector3 cameraTargetPosition = targetPosition + followVector + followOffset;
+
+        return cameraTargetPosition;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        transform.position = CalculateCameraTargetPosition();
 
         transform.rotation = Quaternion.LookRotation(target.transform.forward);
     }
@@ -25,11 +32,7 @@ public class Follow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 targetPosition = target.transform.position;
-
-        Vector3 followVector = transform.forward * -followDistance;
-
-        Vector3 cameraTargetPosition = targetPosition + followVector + followOffset;
+        Vector3 cameraTargetPosition = CalculateCameraTargetPosition();
 
         transform.position = Vector3.Lerp(transform.position, cameraTargetPosition, 
             cameraFollowSpeed * Time.deltaTime);
@@ -43,17 +46,4 @@ public class Follow : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(direction);
     }
-
-    //Vector3 cameraTargetPosition = CalculateCameraTargetPosition();
-    /*
-    Vector3 CalculateCameraTargetPositionAndRotation()
-    {
-        Vector3 targetPosition = target.transform.position;
-
-        Vector3 followVector = transform.forward * -followDistance;
-
-        Vector3 cameraTargetPosition = targetPosition + followVector;
-
-        return cameraTargetPosition;
-    }*/
 }
