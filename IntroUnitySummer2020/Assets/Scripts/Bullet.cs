@@ -16,9 +16,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //When lifeSpan seconds has past delete me
+        //When lifeSpan seconds has passed delete me
         //Hint: Time.deltaTime
 
-        //Destroy(this);
+        //Destroy(gameObject);
     }
 }

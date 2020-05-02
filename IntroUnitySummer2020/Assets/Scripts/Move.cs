@@ -46,7 +46,7 @@ public class Move : MonoBehaviour
             currentSpeed = -speed.x;
         }
 
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             GameObject newBullet = GameObject.Instantiate(bullet, bulletSpawnPoint.position, new Quaternion());
             Rigidbody bulletBody = newBullet.GetComponent<Rigidbody>();
