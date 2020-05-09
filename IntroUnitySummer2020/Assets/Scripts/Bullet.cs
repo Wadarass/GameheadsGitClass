@@ -16,9 +16,19 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //When lifeSpan seconds has passed delete me
-        //Hint: Time.deltaTime
+        currentLife += Time.deltaTime;
 
-        //Destroy(gameObject);
+        if (currentLife >= lifeSpan)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
