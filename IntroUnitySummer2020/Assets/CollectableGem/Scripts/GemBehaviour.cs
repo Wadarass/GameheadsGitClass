@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GemBehaviour : MonoBehaviour
 {
-	[Header("References")]
+    [Header("References")]
 	public GameObject gemVisuals;
 	public GameObject collectedParticleSystem;
 	public CircleCollider2D gemCollider2D;

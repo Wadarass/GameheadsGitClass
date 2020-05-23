@@ -15,6 +15,7 @@ public class SpriteMover : MonoBehaviour
     private float distanceToGround = 0.0f;
     private bool isJumping = false;
     private LayerMask mask;
+    private PlayerData data;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class SpriteMover : MonoBehaviour
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
         distanceToGround = GetComponent<CircleCollider2D>().radius + Mathf.Epsilon;
+
+        data = GetComponent<PlayerData>();
     }
 
     bool IsGrounded()
@@ -41,8 +44,11 @@ public class SpriteMover : MonoBehaviour
 
     private void Update()
     {
+        if (data.isGameOver())
+            return;
+
         //If I hit space key and I'm grounded I'm jumping
-        if(Input.GetKeyUp(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyUp(KeyCode.Space) && IsGrounded())
         {
             isJumping = true;
         }
@@ -51,6 +57,9 @@ public class SpriteMover : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (data.isGameOver())
+            return;
+
         float currentSpeed = 0.0f;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
