@@ -34,6 +34,6 @@ public class GemBehaviour : MonoBehaviour
 
 	void DeactivateGemGameObject()
 	{
-        Destroy(this);
+        Destroy(gameObject);
 	}
 }

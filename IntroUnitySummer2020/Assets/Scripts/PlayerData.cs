@@ -49,6 +49,18 @@ public class PlayerData : MonoBehaviour
         return (currentHealth <= 0.0f);
     }
 
+    private void RespawnGems()
+    {
+        //FIndObjectsOfType is really slow but it's an easy way to get all the gem spawners
+        //Maybe I'll teach how to do this with a Spawn Manager
+        GemSpawner[] spawners = FindObjectsOfType<GemSpawner>();
+
+        foreach (GemSpawner spawner in spawners)
+        {
+            spawner.Spawn();
+        }
+    }
+
     public void Respawn()
     {
         currentHealth = 1.0f;
@@ -56,6 +68,7 @@ public class PlayerData : MonoBehaviour
 
         UpdateScore();
         UpdateHealth();
+        RespawnGems();
 
         gameObject.transform.position = spawnPoint.position;
     }
