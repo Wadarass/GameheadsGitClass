@@ -1,0 +1,8 @@
+[Global]
+CurrentProject=Assembly-CSharp.vpj
+[ActiveConfig]
+Assembly-CSharp.vpj=,Debug|AnyCPU
+Assembly-CSharp-Editor-firstpass.vpj=,Debug|AnyCPU
+[ProjectDates]
+Assembly-CSharp.csproj=20200530215511296
+Assembly-CSharp-Editor-firstpass.csproj=20200516194349775
